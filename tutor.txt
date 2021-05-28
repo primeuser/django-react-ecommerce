@@ -1,0 +1,9 @@
+1. install node.js
+https://nodejs.org/en/
+then 
+2. install react app
+Try installing it globally first, using the command
+npm install -g create-react-app
+now,
+create your react app in desired directory
+npx create-react-app frontend
