@@ -55,7 +55,7 @@ function ProductPage({ match }) {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button  className='btn-block' disabled={product.countInStock==0} type='button'> Add to Cart</Button>
+                                <Button  className='btn-block' disabled={product.countInStock == 0} type='button'> Add to Cart</Button>
                             </ListGroup.Item>
 
                         </ListGroup>
