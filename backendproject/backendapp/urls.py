@@ -1,8 +1,11 @@
 from django.urls import path
 from .views import *
+app_name = "backendapp"
 
-urlpattern = [
+urlpatterns = [
 
-    path('', RouteView.as_view(), name='routes'),
-    
+    path('', getRoutes, name='routes'),
+    path('products/',getProducts, name='products'),
+    path('products/<str:pk>/', getProduct, name='product'),
+
 ]
