@@ -13,20 +13,20 @@ function Product({ product }) {
                 <Link to={`/product/${product._id}`}> 
                     <Card.Title as="div">
                         <strong>
-                            {product.name}
+                            {product.title}
                         </strong>
                     </Card.Title>
                 </Link>
                     <Card.Text as="div">
                         <div className="my-3">
-                            {/* {product.rating} from {product.numReviews} reviews */}
-                            <Rating value={product.rating} text ={`${product.numReviews} reviews`} color ={'#f8e825'} />
+                            {/* {product.rating} from {product.view_count} reviews */}
+                            <Rating value={product.rating} text ={`${product.view_count} reviews`} color ={'#f8e825'} />
                         </div>
                     </Card.Text>
 
 
                     <Card.Text>
-                      Price:  ${product.price}
+                      Price:  ${product.selling_price}
                     </Card.Text>
                 </Card.Body>
 

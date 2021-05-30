@@ -3,4 +3,5 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Product)
+admin.site.register(
+    [Product, Order, OrderItem, Review, ShippingAddress])

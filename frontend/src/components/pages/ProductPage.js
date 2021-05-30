@@ -27,18 +27,18 @@ function ProductPage({ match }) {
             </Link>
             <Row>
                 <Col md={6}>
-                    <Image src={product.image} alt={product.name} fluid/>
+                    <Image src={product.image} alt={product.title} fluid/>
                 </Col>
                 <Col md={3}>
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                            <h4>{product.name}</h4>
+                            <h4>{product.title}</h4>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                           <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
+                           <Rating value={product.rating} text={`${product.view_count} reviews`} color={'#f8e825'} />
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            Price: $ {product.price}
+                            Price: $ {product.selling_price}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             Description: $ {product.description}
@@ -54,7 +54,7 @@ function ProductPage({ match }) {
                                     Price:
                                     </Col>
                                     <Col>
-                                    <strong>${product.price}</strong>
+                                    <strong>${product.selling_price}</strong>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -64,12 +64,12 @@ function ProductPage({ match }) {
                                     Status:
                                     </Col>
                                     <Col>
-                                    {product.countInStock > 0 ? 'In Stock ' : 'Out of Stock '}
+                                    {product.stock_count > 0 ? 'In Stock ' : 'Out of Stock '}
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button  className='btn-block' disabled={product.countInStock == 0} type='button'> Add to Cart</Button>
+                                <Button  className='btn-block' disabled={product.stock_count == 0} type='button'> Add to Cart</Button>
                             </ListGroup.Item>
 
                         </ListGroup>
