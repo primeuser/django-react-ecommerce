@@ -1,31 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux'
+import  { listProductDetails } from '../../actions/productActions'
 import {Link} from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
-
+import Loader from '../Loader'
+import Message from '../Message'
 import Rating from '../Rating'
 // import products from './products'
 function ProductPage({ match }) {
-    const [product, setProduct] = useState([])
+    //const [product, setProduct] = useState([])
+
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const  {error, loading, product } = productDetails
+    // let loading, error, product = {}
 
     useEffect(() => {
 
-        async function fetchProduct(){
-            const {data}  = await axios.get(`/api/products/${match.params.id}`)
-            setProduct(data)
+        dispatch(listProductDetails(match.params.id))
 
-        }  
-        fetchProduct()
+        // async function fetchProduct(){
+        //     const {data}  = await axios.get(`/api/products/${match.params.id}`)
+        //     setProduct(data)
+
+        // }  
+        // fetchProduct()
+
     }, 
-    []
+    [dispatch]
     )
+ 
+    
     // const product = products.find((p) => p._id === match.params.id)
     return (
         <div>
             {/* {product.name} */}
             <Link to='/' className='btn btn-light my-3'>Go Back
             </Link>
-            <Row>
+            {
+                loading ?
+                <Loader/>
+                : error ?
+                <Message variant='danger'> {error} </Message>
+                :(
+                    <Row>
                 <Col md={6}>
                     <Image src={product.image} alt={product.title} fluid/>
                 </Col>
@@ -76,6 +95,9 @@ function ProductPage({ match }) {
                     </Card>
                 </Col>
             </Row>
+                )
+            }
+            
         </div>
     )
 }
